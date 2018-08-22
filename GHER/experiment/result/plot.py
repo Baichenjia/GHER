@@ -138,8 +138,7 @@ for env_id in sorted(data.keys()):
     ind = 0
     ind1 = 0
     config_list = []
-    # for config in ["G-HER-her-sparse", "HER-sparse", "DDPG-sparse", "DDPG-dense"]:
-    for config in sorted(data[env_id].keys()):
+    for config in ["G-HER-her-sparse", "HER-sparse", "DDPG-sparse", "DDPG-dense"]:
         print(config)
         config_list.append(config)
 
@@ -171,5 +170,5 @@ for env_id in sorted(data.keys()):
     plt.xlabel('Epoch', fontsize=16)
     plt.ylabel('Median Success Rate', fontsize=16)
     plt.legend()
-    plt.savefig(os.path.join("pic", env_id+".pdf"))
+    # plt.savefig(os.path.join("pic", env_id+".pdf"))
     plt.show()
