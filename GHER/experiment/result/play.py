@@ -8,7 +8,7 @@ import GHER.experiment.config as config
 from GHER.rollout import RolloutWorker
 
 @click.command()
-@click.option('--policy_file', default="GHer-result/FetchPickAndPlace/result-1/policy_best.pkl", type=str)
+@click.option('--policy_file', default="GHer-result/FetchPush/result-1/policy_best.pkl", type=str)
 @click.option('--seed', type=int, default=0)
 @click.option('--n_test_rollouts', type=int, default=20)
 @click.option('--render', type=int, default=1)
