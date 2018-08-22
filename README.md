@@ -1,32 +1,36 @@
-# Hindsight Experience Replay
-For details on Hindsight Experience Replay (HER), please read the [paper](https://arxiv.org/abs/1707.01495).
+## Guided goal generation for multi-goal reinforcement learning
+The details of this paper are shown [here](https://sites.google.com/view/gher-algorithm).
 
-## How to use Hindsight Experience Replay
+### Prerequisites
+GHER requires python3.6, tensorflow-gpu 1.8.0, [mujoco](http://www.mujoco.org/)-engine with license,  [mujoco-py](https://github.com/openai/mujoco-py), openAI [baselines](https://github.com/openai/baselines).
 
-### Getting started
-Training an agent is very simple:
-```bash
-python -m baselines.her.experiment.train
+### Installation
+
 ```
-This will train a DDPG+HER agent on the `FetchReach` environment.
-You should see the success rate go up quickly to `1.0`, which means that the agent achieves the
-desired goal in 100% of the cases.
-The training script logs other diagnostics as well and pickles the best policy so far (w.r.t. to its test success rate),
-the latest policy, and, if enabled, a history of policies every K epochs.
-
-To inspect what the agent has learned, use the play script:
-```bash
-python -m baselines.her.experiment.play /path/to/an/experiment/policy_best.pkl
+git clone https://github.com/Baichenjia/GHER.git
+cd GHER
+pip install -e .
 ```
-You can try it right now with the results of the training step (the script prints out the path for you).
-This should visualize the current policy for 10 episodes and will also print statistics.
 
+### The conditional RNN model
+Set the `envname` parameter in `GHER/gmm_model/CONDIG.py` file. This file describes the hyper-parameters in proposed conditional RNN model. Model architecture defined in file `GHER/gmm_model/gmm_model.py`. We have pre-trained the RNN model in all tasks and save the Tensorflow model parameters in folder `GHER/gmm_model/gmm_save/`. When G-HER start training, the pre-trained RNN model will be loaded according to `envname` setup.
 
-### Reproducing results
-In order to reproduce the results from [Plappert et al. (2018)](https://arxiv.org/abs/1802.09464), run the following command:
-```bash
-python -m baselines.her.experiment.train --num_cpu 19
+### Train a G-HER agent
+Training an agent is simple, `cd GHER/experiment/` and then
 ```
-This will require a machine with sufficient amount of physical CPU cores. In our experiments,
-we used [Azure's D15v2 instances](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes),
-which have 20 physical cores. We only scheduled the experiment on 19 of those to leave some head-room on the system.
+python train.py
+```
+This will train a GHER+DDPG agent on the `FetchPush` task. You can choose the other tasks by setting the choice in `train.py` file. Then set the same environment name in `GHER/gmm_model/CONDIG.py` to load the specific pre-trained RNN model.
+
+### Results
+We reproduce 3 baselines includes: [HER](https://arxiv.org/abs/1707.01495), typical [UVFAs](http://proceedings.mlr.press/v37/schaul15.pdf) in multi-goal setup. Both of them are under the sparse rewards setup. We also reproduce a vanilla DDPG with a shaped reward for comparison. We trained all the baselines with 1 cpu core and 1 NVIDIA 1080Ti GPU in a single machine. The policy file and learning curve are saved in folder `GHER/experiment/result/`. You are free to use these pre-trained baseline results. We illustrate the learning curve of baselines and proposed G-HER result shows in `cd GHER/experiment/result/pic`. You can plot the learning curve with 
+```
+python plot.py
+```
+
+### Play with G-HER
+We save the pre-trained GHER agent in `GHER/experiment/result/Gher-result/`. To visualize the performance of the pre-trained best policy, `cd GHER/experiment/result` and
+```
+python play.py
+```
+This will use the pre-trained `FetchPickAndPlace` policy to rollout for 20 episodes. You are free to use other policies in other tasks by modifying the `policy_file` choice. The recorded video was shown [here](https://sites.google.com/view/gher-algorithm).
