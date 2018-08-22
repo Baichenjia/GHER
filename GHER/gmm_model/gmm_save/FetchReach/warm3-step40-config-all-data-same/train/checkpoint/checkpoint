@@ -1,0 +1,6 @@
+model_checkpoint_path: "model-last.ckpt"
+all_model_checkpoint_paths: "model-920-(-8.471).ckpt"
+all_model_checkpoint_paths: "model-940-(-8.485).ckpt"
+all_model_checkpoint_paths: "model-960-(-8.471).ckpt"
+all_model_checkpoint_paths: "model-980-(-8.509).ckpt"
+all_model_checkpoint_paths: "model-last.ckpt"

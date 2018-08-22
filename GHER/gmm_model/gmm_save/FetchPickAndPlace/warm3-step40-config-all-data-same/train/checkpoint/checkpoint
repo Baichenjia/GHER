@@ -1,0 +1,6 @@
+model_checkpoint_path: "model-last.ckpt"
+all_model_checkpoint_paths: "model-1920-(-10.33).ckpt"
+all_model_checkpoint_paths: "model-1940-(-10.28).ckpt"
+all_model_checkpoint_paths: "model-1960-(-10.46).ckpt"
+all_model_checkpoint_paths: "model-1980-(-10.64).ckpt"
+all_model_checkpoint_paths: "model-last.ckpt"
