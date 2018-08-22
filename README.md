@@ -1,5 +1,5 @@
 ## Guided goal generation for multi-goal reinforcement learning
-The details of this paper shows [here](https://sites.google.com/view/gher-algorithm).
+The detail of this paper shows [here](https://sites.google.com/view/gher-algorithm).
 
 ### Prerequisites
 GHER requires python3.6, tensorflow-gpu 1.8.0, [mujoco](http://www.mujoco.org/)-engine with license,  [mujoco-py](https://github.com/openai/mujoco-py), openAI [baselines](https://github.com/openai/baselines).
