@@ -1,4 +1,4 @@
-## Guided goal generation for multi-goal reinforcement learning
+## Guided goal generation for hindsight multi-goal reinforcement learning
 The detail of this paper shows [here](https://sites.google.com/view/gher-algorithm).
 
 ### Prerequisites
