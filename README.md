@@ -1,5 +1,4 @@
 ## Guided goal generation for hindsight multi-goal reinforcement learning
-The detail of this paper shows [here](https://sites.google.com/view/gher-algorithm).
 
 ### Prerequisites
 GHER requires python3.6, tensorflow-gpu 1.8.0, [mujoco](http://www.mujoco.org/)-engine with license,  [mujoco-py](https://github.com/openai/mujoco-py), openAI [baselines](https://github.com/openai/baselines).
@@ -33,4 +32,4 @@ We save the pre-trained GHER agent in `GHER/experiment/result/Gher-result/`. To 
 ```
 python play.py
 ```
-This will use the pre-trained `FetchPickAndPlace` policy to rollout for 20 episodes. You are free to use other policies in other tasks by modifying the `policy_file` choice. The recorded video was shown [here](https://sites.google.com/view/gher-algorithm).
+This will use the pre-trained `FetchPickAndPlace` policy to rollout for 20 episodes. You are free to use other policies in other tasks by modifying the `policy_file` choice. 
