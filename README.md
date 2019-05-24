@@ -1,4 +1,3 @@
-## Guided goal generation for hindsight multi-goal reinforcement learning
 
 ### Prerequisites
 GHER requires python3.6, tensorflow-gpu 1.8.0, [mujoco](http://www.mujoco.org/)-engine with license,  [mujoco-py](https://github.com/openai/mujoco-py), openAI [baselines](https://github.com/openai/baselines).
